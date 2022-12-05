@@ -35,6 +35,16 @@ public class RefactoringTest
 		assertThat(customer_1.statement(), is(expectedMessageFor("TEST TITLE 3", 1.5, 1.5, 1)));
 	}
 
+	@Test
+	public void discountChildrenRentalTest() 
+	{
+		//Add rental, discount should show up here
+		customer_1.addRental(new Rental(movie_3, 4));
+		//Check if the statement is correct
+		assertThat(customer_1.statement(), is(expectedMessageFor("TEST TITLE 3", 3.0, 3.0, 1)));
+	}
+
+
 	private static String expectedMessageFor(String rental, double price, double total, int renterPointsEarned) {
         return "Rental record for Franklin\n\t" + rental + "\t" + price + "\nAmount owed is " + total + "\nYou earned " + renterPointsEarned + " frequent renter points";
     	}
