@@ -48,7 +48,8 @@ public class Customer {
 
     //This method is too long, lets move the switch statement to a separate function
     public String statement() {
-        int frequentRenterPoints = 0;
+	int totalAmount = 0; //Variable to hold the current total value
+    	int frequentRenterPoints = 0;
 
         String result = "Rental record for " + getName() + "\n";
         for (Rental rental : rentals) { 
