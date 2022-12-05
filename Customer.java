@@ -20,14 +20,14 @@ public class Customer {
         rentals.add(rental);
     }
 
-    public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
-
-        String result = "Rental record for " + getName() + "\n";
-        for (Rental rental : rentals) {
-            double amount = 0;
-            switch (rental.getMovie().getPriceCode()) {
+    //We make this method private as it will never be called outside of the statement method
+    //Using extract method we are moving the switch statement to a separate method
+    private double getAmount(Rental rental)
+    {	
+	    double amount = 0; //Local variable to hold the amount from each movie
+            
+	    //Switch statement to find the correct amount for each movie using the PriceCode
+	    switch (rental.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
                     amount += 2;
                     if (rental.getDaysRented() > 2)
@@ -43,11 +43,23 @@ public class Customer {
                     break;
             }
 
+	    return amount; //Return the amount found
+    }
+
+    //This method is too long, lets move the switch statement to a separate function
+    public String statement() {
+        int frequentRenterPoints = 0;
+
+        String result = "Rental record for " + getName() + "\n";
+        for (Rental rental : rentals) { 
             // add frequent renter points
             frequentRenterPoints++;
             // add bonus for a two day new release rental
             if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1)
                 frequentRenterPoints++;
+
+	    //Local variable to hold the value of the amount on each rental
+	    double amount = getAmount(rental);
 
             // show figures for this rental
             result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(amount) + "\n";

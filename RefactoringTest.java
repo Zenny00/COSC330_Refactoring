@@ -20,7 +20,7 @@ public class RefactoringTest
 	private final Customer customer_1 = new Customer("Franklin");
 
 	@Test
-	public void testMovieCreation()
+	public void testGetMovieTitle()
 	{
 		//Create new movie and test if it is created correctly
 		assertEquals(movie_1.getTitle(), "TEST TITLE 1");
