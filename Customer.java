@@ -18,15 +18,7 @@ public class Customer {
 
     public void addRental(Rental rental) {
         rentals.add(rental);
-    }
-
-    //We make this method private as it will never be called outside of the statement method
-    //Using extract method we are moving the switch statement to a separate method
-    private double getAmount(Rental current_rental)
-    {
-    	//Delegation, have the current rental return the amount charged
-	return current_rental.getAmountCharged();	    
-    }
+    } 
 
     //This method is too long, lets move the switch statement to a separate function
     public String statement() {
@@ -35,9 +27,6 @@ public class Customer {
 
         String statement_result = "Rental record for " + getName() + "\n";
         for (Rental rental : rentals) {
-		//Local variable to hold the value of the amount on each rental
-		double rental_amount = getAmount(rental);
-
            	// add frequent renter points
             	num_frequent_renter_points++;
 
@@ -46,9 +35,9 @@ public class Customer {
 			num_frequent_renter_points++;
 
 		// show figures for this rental
-		statement_result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(rental_amount) + "\n";
+		statement_result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(rental.getAmountCharged()) + "\n";
 
-		statement_amount += rental_amount;
+		statement_amount += rental.getAmountCharged();
         }
 
         statement_result += "Amount owed is " + String.valueOf(statement_amount) + "\n";
