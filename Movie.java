@@ -49,4 +49,21 @@ public class Movie {
 
 	    return amount_charged; //Return the amount found            
     }
+
+    //Get the total number of frequent renter points awarded
+    public int getFrequentRenterPoints(int days_rented)
+    {
+	//Initialize local variable to 0
+	    int num_frequent_renter_points = 0;
+	    
+	    // add frequent renter points
+	    num_frequent_renter_points++;
+	    
+	    // add bonus for a two day new release rental
+	    if (priceCode == Movie.NEW_RELEASE && days_rented > 1)
+		    num_frequent_renter_points++;
+
+	    //Return the total number of frequent renter points
+	    return num_frequent_renter_points;
+    }
 }
