@@ -27,12 +27,8 @@ public class Customer {
 
         String statement_result = "Rental record for " + getName() + "\n";
         for (Rental rental : rentals) {
-           	// add frequent renter points
-            	num_frequent_renter_points++;
-
-		// add bonus for a two day new release rental
-		if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1)
-			num_frequent_renter_points++;
+		//Calculate the number of frequent renter points
+		num_frequent_renter_points += rental.getFrequentRenterPoints();
 
 		// show figures for this rental
 		statement_result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(rental.getAmountCharged()) + "\n";
