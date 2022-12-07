@@ -35,6 +35,22 @@ public class Customer {
         return statement_result;
     }
 
+    //New method to get the statement in HTML format
+    public String htmlStatement()
+    {
+	//Local variable to hold the statement result in HTML
+	String statement_result = "<h1>Rental record for <b>" + getName() + "</b></h1>\n";
+        
+	for (Rental rental : rentals)
+		statement_result += "<p>" + rental.getMovie().getTitle() + "\t" + String.valueOf(rental.getAmountCharged()) + "</p>\n";
+
+	//Use a function call rather than a temp variable
+        statement_result += "<p>Amount owed is <b>" + String.valueOf(getTotalAmountCharged()) + "</b></p>\n";
+        statement_result += "<p>You earned <b>" + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points</b></p>";
+
+        return statement_result;
+    }
+
     //Calculate the total amount to be charged
     public double getTotalAmountCharged()
     {

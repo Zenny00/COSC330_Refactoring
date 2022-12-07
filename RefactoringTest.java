@@ -36,6 +36,15 @@ public class RefactoringTest
 	}
 
 	@Test
+	public void baseChildrenRentalTestHTML() 
+	{
+		//Add rental, discount shouldn't show up here
+		customer_1.addRental(new Rental(movie_3, 2));
+		//Check if the statement is correct
+		assertThat(customer_1.htmlStatement(), is(expectedMessageForHTML("TEST TITLE 3", 1.5, 1.5, 1)));
+	}
+
+	@Test
 	public void discountChildrenRentalTest() 
 	{
 		//Add rental, discount should show up here
@@ -131,6 +140,12 @@ public class RefactoringTest
 
 	//Helper function to create an expected output String for the customer statement
 	private static String expectedMessageFor(String rental, double price, double total, int renterPointsEarned) {
-        return "Rental record for Franklin\n\t" + rental + "\t" + price + "\nAmount owed is " + total + "\nYou earned " + renterPointsEarned + " frequent renter points";
+        	return "Rental record for Franklin\n\t" + rental + "\t" + price + "\nAmount owed is " + total + "\nYou earned " + renterPointsEarned + " frequent renter points";
     	}
+
+	//Helper function to create an expected output String for the customer statement as HTML
+	private static String expectedMessageForHTML(String rental, double price, double total, int renterPointsEarned) {
+        	return "<h1>Rental record for <b>Franklin</b></h1>\n<p>" + rental + "\t" + price + "</p>\n<p>Amount owed is <b>" + total + "</b></p>\n<p>You earned <b>" + renterPointsEarned + " frequent renter points</b></p>";
+    	}
+
 }
