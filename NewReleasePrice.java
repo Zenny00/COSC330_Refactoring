@@ -5,7 +5,12 @@ public class NewReleasePrice extends Price {
         return Movie.NEW_RELEASE;
     }
 
-    public double getAmountCharged(int daysRented) {
         return daysRented * 3;
+    }
+
+    public int getFrequentRenterPoints(int daysRented) {
+        if (daysRented > 1)
+            return 2;
+        return 1;
     }
 }
