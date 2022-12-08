@@ -18,7 +18,7 @@ public abstract class Price {
                 amount += 1.5;
                 if (daysRented > 3)
                     amount += (daysRented - 3) * 1.5;
-                brea;
+                break;
         }
         return amount;
     }
