@@ -3,7 +3,7 @@ package bad.robot.refactoring.chapter1;
 public abstract class Price {
     abstract int getPriceCode();
 
-    public double getCharge(int daysRented) {
+    public double getAmountCharged(int daysRented) {
         double amount = 0;
         switch (getPriceCode()) {
             case Movie.REGULAR:
