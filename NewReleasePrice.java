@@ -5,6 +5,7 @@ public class NewReleasePrice extends Price {
         return Movie.NEW_RELEASE;
     }
 
+    public double getAmountCharged(int daysRented) {
         return daysRented * 3;
     }
 
