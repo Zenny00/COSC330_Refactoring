@@ -9,11 +9,6 @@ public abstract class Price {
             case Movie.NEW_RELEASE:
                 amount += daysRented * 3;
                 break;
-            case Movie.CHILDREN:
-                amount += 1.5;
-                if (daysRented > 3)
-                    amount += (daysRented - 3) * 1.5;
-                brea;
         }
         return amount;
     }
