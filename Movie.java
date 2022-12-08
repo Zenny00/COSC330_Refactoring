@@ -42,9 +42,6 @@ public class Movie {
         return price.getAmountCharged(days_rented);
     }
 
-	    return amount_charged; //Return the amount found            
-    }
-
     //Get the total number of frequent renter points awarded
     public int getFrequentRenterPoints(int days_rented)
     {
