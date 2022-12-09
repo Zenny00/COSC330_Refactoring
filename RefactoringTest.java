@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.is;
 import bad.robot.refactoring.chapter1.Movie;
 import bad.robot.refactoring.chapter1.Customer;
 import bad.robot.refactoring.chapter1.Rental;
+import bad.robot.refactoring.chapter1.*;
 
 public class RefactoringTest
 {
